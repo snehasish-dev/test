@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        button{
+            border-radius:50%;
+            margin-bottom:7px;
+            margin-left:15px;
+            height:48px;
+            width:48px;
+            font-size:15px;
+            font-weight:bold;
+            box-shadow:0px 0px 10px cyan;
+            cursor:pointer;
+            
+            
+        }
+        button:active{
+            background-color:rgb(167, 255, 255);
+            box-shadow:0px 0px 6px black;
+
+        }
+        .con{
+            height:500px;
+            width:403px;
+            position:relative;
+            left:480px;
+            top:20px;
+            border-radius:15px;
+            background-color:rgb(255, 133, 88);
+            box-shadow:0px 0px 30px black;
+        }
+        body{
+            background-color:rgb(90, 255, 255);
+        }
+        .casio{
+            position:relative;
+            height:20px;
+            border:1px solid black;
+            width:100px;
+            left:300px;
+            top:10px;
+            display:none;
+
+        }
+        .table{
+            width:80%;
+            margin-left:28px;
+            margin-top:65px;
+            padding-right:30px;
+        }
+        table{
+            border:none;
+        }
+        .row{
+            display:flex;
+            padding:7px;
+            width:105%;
+        }
+        .dis{
+            height:57px;
+            width:320px;
+            border:0.2px solid black;
+            position:relative;
+            left:32px;
+            top:50px;
+            background-color:whitesmoke;
+            border-radius:10px;
+            font-size:25px;
+            padding-left:2px;
+            box-shadow:0px 0px 10px black;
+        }
+        .display input{
+            padding-left:10px;
+            padding-right:10px;
+        }
+        #equal{
+            width:100px;
+            height:45px;
+            font-size:25px;
+            border-radius:10px;
+            margin-left:22px;
+            padding-top:5px;
+        }
+        #equal:active{
+            background-color:rgb(154, 255, 154);
+        }
+        .button:active{
+            background-color:rgb(255, 154, 154);
+            box-shadow:0px 0px 10px cyan;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="con">
+            <div class="casio">Casio82-ms</div>
+            <div class="display">
+                <input type="text" class="dis">
+            </div>
+        <table>
+        <div class="table">
+            <div class="row">
+                <button id="7" class="button">7</button>
+                <button id="8" class="button">8</button>   
+                <button id="9" class="button">9</button>   
+                <button id="DEL" class="button">DEL</button>   
+                <button id="ac" class="button">AC</button> 
+            </div>  
+            <div class="row">
+                <button id="4" class="button">4</button>
+                <button id="5" class="button">5</button>   
+                <button id="6" class="button">6</button>   
+                <button id="mul" class="button">*</button>   
+                <button id="div" class="button">/</button>
+            </div>  
+            <div class="row">
+                <button id="1" class="button">1</button>
+                <button id="2" class="button">2</button>   
+                <button id="3" class="button">3</button>   
+                <button id="add" class="button">+</button>   
+                <button id="sub" class="button">-</button>
+            </div>  
+            <div class="row">
+                <button id="0" class="button">0</button>
+                <button id="dot" class="button">.</button>   
+                <button id="ans" class="button">%</button>   
+                
+                <button id="para" class="button braket open">(</button>
+                <button id="para" class="button braket close">)</button>
+            </div>
+            <div class="row">
+            <button id="dub_ze" class="button ">00</button> 
+            <button id="dub_ze_p" class="button">0.0</button> 
+            <button id="dub_ze_p" class="button ">+/-</button> 
+            <button id="equal" class="button">=</button>     
+            </div>
+            </tr>
+        </div>
+    </table>
+        </div>
+    </main>
+    <script type="text/javascript">
+                    // Todo: Make M+ M- and MC functional
+                    var string = "";
+                    var buttons = document.querySelectorAll('.button');
+                    Array.from(buttons).forEach((button)=>{
+                    button.addEventListener('click', (e)=>{
+                        if(e.target.innerHTML == '='){
+                        string = eval(string);
+                        document.querySelector('input').value = string;
+                        }
+                        else if(e.target.innerHTML == 'AC'){
+                        string = " ";
+                        document.querySelector('input').value = string;
+                        }
+                        else if(e.target.innerHTML == 'DEL'){
+                            string = string.substring(0, string.length-1);
+                            InputDeviceInfo.value = string;
+                        }
+                        else{ 
+                        console.log(e.target)
+                        string = string + e.target.innerHTML;
+                        document.querySelector('input').value = string;
+                        }
+                    })
+                    })
+    </script>
+</body>
+</html>
